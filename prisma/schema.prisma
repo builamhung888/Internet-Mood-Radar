@@ -1,0 +1,124 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// Normalized items from all sources
+model Item {
+  id          String   @id // Stable hash
+  source      String   // rss | reddit | hn
+  lens        String   // Headlines | Conversation | Weather | Tech
+  language    String   // he | en | ru | other
+  title       String
+  text        String?
+  createdAt   DateTime
+  url         String
+  engagement  Int      @default(0) // score/comments
+  context     String   // feed name / subreddit / thread
+  fetchedAt   DateTime @default(now())
+
+  // Relevance and deduplication
+  relevanceScore Float @default(0)
+  duplicateOf    String? // ID of canonical item if duplicate
+
+  @@index([createdAt])
+  @@index([source])
+  @@index([lens])
+}
+
+// LLM output cache
+model LLMCache {
+  id        String   @id @default(uuid())
+  cacheKey  String   @unique
+  output    String   // JSON stringified
+  createdAt DateTime @default(now())
+  expiresAt DateTime
+
+  @@index([cacheKey])
+  @@index([expiresAt])
+}
+
+// Daily snapshots for delta computation
+model Snapshot {
+  id                String   @id @default(uuid())
+  date              String   @unique // YYYY-MM-DD
+  tensionIndex      Float
+  emotions          String   // JSON: emotion distribution
+  topTopics         String   // JSON: topic keywords + receipt IDs
+  llmOutputs        String   // JSON: cached LLM outputs
+  createdAt         DateTime @default(now())
+
+  @@index([date])
+}
+
+// Source health tracking
+model SourceHealth {
+  id           String   @id @default(uuid())
+  source       String   @unique
+  lastFetchAt  DateTime?
+  lastSuccessAt DateTime?
+  errorCount   Int      @default(0)
+  lastError    String?
+  status       String   @default("unknown") // healthy | degraded | down | unknown
+
+  @@index([source])
+}
+
+// Historical pulse data (saved every request for time-series analysis)
+model HistoricalPulse {
+  id            String   @id @default(uuid())
+  timestamp     DateTime @default(now())
+  window        String   // 1h | 6h | 24h
+  tensionIndex  Float
+  emotions      String   // JSON: EmotionDistribution
+  topicCount    Int
+  itemCount     Int
+  topTopics     String   // JSON: top 5 topic titles and keywords
+  overallSummary String
+
+  @@index([timestamp])
+  @@index([window])
+}
+
+// Historical items (persisted for historical queries)
+model HistoricalItem {
+  id            String   @id // Same as NormalizedItem id (hash)
+  source        String
+  lens          String
+  language      String
+  title         String
+  text          String?
+  url           String
+  engagement    Int      @default(0)
+  context       String
+  relevanceScore Float   @default(0)
+  country       String?  // Country/region name from location
+  locationName  String?  // Location name (city, etc.)
+  lat           Float?   // Latitude for map display
+  lng           Float?   // Longitude for map display
+  createdAt     DateTime // Original item creation time
+  fetchedAt     DateTime @default(now())
+
+  @@index([createdAt])
+  @@index([fetchedAt])
+  @@index([source])
+  @@index([url])
+  @@index([country])
+}
+
+// App settings (persisted configuration)
+model Settings {
+  id                  String   @id @default("default")
+  regions             String   @default("Israel") // comma-separated list of regions/countries
+  language            String   @default("en") // en | he | ru
+  categoriesEnabled   String   @default("news,events,tech,social,weather") // comma-separated
+  maxSearchQueries    Int      @default(20) // per region
+  maxUrlsToScrape     Int      @default(50) // per region
+  sourcesPerCategory  Int      @default(4) // Number of sources to discover per category (2-8)
+  displayTimeFrame    String   @default("1d") // 1d | 1w | 1m | 1y | all
+  updatedAt           DateTime @updatedAt
+}
